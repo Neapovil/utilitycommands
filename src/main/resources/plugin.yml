@@ -11,3 +11,7 @@ permissions:
     default: op
   utilitycommands.command.heal.other:
     default: op
+  utilitycommands.command.feed:
+    default: op
+  utilitycommands.command.feed.other:
+    default: op
