@@ -25,3 +25,5 @@ permissions:
     default: op
   utilitycommands.command.edititem.lore:
     default: op
+  utilitycommands.command.playerinventory:
+    default: op
