@@ -19,3 +19,9 @@ permissions:
     default: op
   utilitycommands.command.repairitem.all:
     default: op
+  utilitycommands.command.edititem:
+    default: op
+  utilitycommands.command.edititem.displayname:
+    default: op
+  utilitycommands.command.edititem.lore:
+    default: op
