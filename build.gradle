@@ -17,5 +17,5 @@ dependencies {
   compileOnly group: 'io.papermc.paper', name: 'paper-api', version: '1.18.1-R0.1-SNAPSHOT'
   compileOnly group: 'dev.jorel', name: 'commandapi-core', version: '7.0.0'
   
-  implementation group: 'net.kyori', name: 'adventure-text-minimessage', version: '4.10.1'
+  compileOnly group: 'net.kyori', name: 'adventure-text-minimessage', version: '4.10.1'
 }
