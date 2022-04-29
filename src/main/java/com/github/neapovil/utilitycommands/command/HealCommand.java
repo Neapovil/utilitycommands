@@ -20,8 +20,8 @@ public final class HealCommand
                 .register();
 
         new CommandAPICommand("heal")
-                .withPermission("utilitycommands.command.heal.other")
-                .withArguments(new PlayerArgument("player"))
+                .withPermission("utilitycommands.command.heal")
+                .withArguments(new PlayerArgument("player").withPermission("utilitycommands.command.heal.other"))
                 .executes((sender, args) -> {
                     final Player player = (Player) args[0];
 
