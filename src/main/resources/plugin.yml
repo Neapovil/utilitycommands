@@ -1,0 +1,13 @@
+name: UtilityCommands
+main: com.github.neapovil.utilitycommands.UtilityCommands
+version: 1.0.0
+api-version: 1.13
+author: Neapovil
+website: https://github.com/Neapovil/utilitycommands
+depend:
+  - CommandAPI
+permissions:
+  utilitycommands.command.heal:
+    default: op
+  utilitycommands.command.heal.other:
+    default: op
