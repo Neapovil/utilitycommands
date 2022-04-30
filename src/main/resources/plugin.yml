@@ -27,3 +27,9 @@ permissions:
     default: op
   utilitycommands.command.playerinventory:
     default: op
+  utilitycommands.command.fly:
+    default: op
+  utilitycommands.command.fly.toggle:
+    default: op
+  utilitycommands.command.fly.speed:
+    default: op
