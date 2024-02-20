@@ -7,33 +7,36 @@ import dev.jorel.commandapi.CommandAPI;
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.arguments.LiteralArgument;
 
-public final class RepairItemCommand
+public final class RepairItemCommand implements ICommand
 {
-    public static final void register()
+    public void register()
     {
         new CommandAPICommand("repairitem")
-                .withPermission("utilitycommands.command.repairitem")
+                .withPermission("utilitycommands.command")
                 .executesPlayer((player, args) -> {
                     final ItemStack itemstack = player.getInventory().getItemInMainHand();
 
-                    final Damageable itemmeta = (Damageable) itemstack.getItemMeta();
-
-                    if (!itemmeta.hasDamage())
+                    if (!(itemstack.getItemMeta() instanceof Damageable meta))
                     {
-                        throw CommandAPI.fail("This item can't be repaired");
+                        throw CommandAPI.failWithString("This item can't be repaired.");
                     }
 
-                    itemmeta.setDamage(0);
+                    if (!meta.hasDamage())
+                    {
+                        throw CommandAPI.failWithString("Nothing to repair.");
+                    }
 
-                    itemstack.setItemMeta(itemmeta);
+                    meta.setDamage(0);
+
+                    itemstack.setItemMeta(meta);
 
                     player.sendMessage("Item repaired");
                 })
                 .register();
 
         new CommandAPICommand("repairitem")
-                .withPermission("utilitycommands.command.repairitem")
-                .withArguments(new LiteralArgument("all").withPermission("utilitycommands.command.repairitem.all"))
+                .withPermission("utilitycommands.command")
+                .withArguments(new LiteralArgument("all"))
                 .executesPlayer((player, args) -> {
                     int count = 0;
 
@@ -44,13 +47,16 @@ public final class RepairItemCommand
                             continue;
                         }
 
-                        final Damageable itemmeta = (Damageable) itemstack.getItemMeta();
-
-                        if (itemmeta.hasDamage())
+                        if (!(itemstack.getItemMeta() instanceof Damageable meta))
                         {
-                            itemmeta.setDamage(0);
+                            continue;
+                        }
 
-                            itemstack.setItemMeta(itemmeta);
+                        if (meta.hasDamage())
+                        {
+                            meta.setDamage(0);
+
+                            itemstack.setItemMeta(meta);
 
                             count++;
                         }

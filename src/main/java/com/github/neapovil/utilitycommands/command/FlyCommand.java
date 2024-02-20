@@ -4,31 +4,27 @@ import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.arguments.FloatArgument;
 import dev.jorel.commandapi.arguments.LiteralArgument;
 
-public final class FlyCommand
+public final class FlyCommand implements ICommand
 {
-    public static final void register()
+    public void register()
     {
         new CommandAPICommand("fly")
-                .withPermission("utilitycommands.command.fly")
-                .withArguments(new LiteralArgument("toggle").withPermission("utilitycommands.command.fly.toggle"))
+                .withPermission("utilitycommands.command")
+                .withArguments(new LiteralArgument("toggle"))
                 .executesPlayer((player, args) -> {
                     final boolean toggle = !player.getAllowFlight();
-
                     player.setAllowFlight(toggle);
-
                     player.sendMessage("Fly status changed to: " + toggle);
                 })
                 .register();
 
         new CommandAPICommand("fly")
-                .withPermission("utilitycommands.command.fly")
-                .withArguments(new LiteralArgument("speed").withPermission("utilitycommands.command.fly.speed"))
-                .withArguments(new FloatArgument("float", -1, 1))
+                .withPermission("utilitycommands.command")
+                .withArguments(new LiteralArgument("speed"))
+                .withArguments(new FloatArgument("speed", -1, 1))
                 .executesPlayer((player, args) -> {
-                    final float speed = (float) args[0];
-
+                    final float speed = (float) args.get("speed");
                     player.setFlySpeed(speed);
-
                     player.sendMessage("Fly speed changed to: " + speed);
                 })
                 .register();

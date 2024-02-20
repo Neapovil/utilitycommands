@@ -5,12 +5,12 @@ import org.bukkit.entity.Player;
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.arguments.PlayerArgument;
 
-public final class FeedCommand
+public final class FeedCommand implements ICommand
 {
-    public static final void register()
+    public void register()
     {
         new CommandAPICommand("feed")
-                .withPermission("utilitycommands.command.feed")
+                .withPermission("utilitycommands.command")
                 .executesPlayer((player, args) -> {
                     player.setFoodLevel(20);
 
@@ -19,10 +19,10 @@ public final class FeedCommand
                 .register();
 
         new CommandAPICommand("feed")
-                .withPermission("utilitycommands.command.feed")
-                .withArguments(new PlayerArgument("player").withPermission("utilitycommands.command.feed.other"))
+                .withPermission("utilitycommands.command")
+                .withArguments(new PlayerArgument("player"))
                 .executes((sender, args) -> {
-                    final Player player = (Player) args[0];
+                    final Player player = (Player) args.get("player");
 
                     player.setFoodLevel(20);
                     player.sendMessage("You have been fed");

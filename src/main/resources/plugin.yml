@@ -1,35 +1,8 @@
 name: UtilityCommands
 main: com.github.neapovil.utilitycommands.UtilityCommands
 version: 1.0.0
-api-version: 1.13
+api-version: 1.19
 author: Neapovil
 website: https://github.com/Neapovil/utilitycommands
 depend:
   - CommandAPI
-permissions:
-  utilitycommands.command.heal:
-    default: op
-  utilitycommands.command.heal.other:
-    default: op
-  utilitycommands.command.feed:
-    default: op
-  utilitycommands.command.feed.other:
-    default: op
-  utilitycommands.command.repairitem:
-    default: op
-  utilitycommands.command.repairitem.all:
-    default: op
-  utilitycommands.command.edititem:
-    default: op
-  utilitycommands.command.edititem.displayname:
-    default: op
-  utilitycommands.command.edititem.lore:
-    default: op
-  utilitycommands.command.playerinventory:
-    default: op
-  utilitycommands.command.fly:
-    default: op
-  utilitycommands.command.fly.toggle:
-    default: op
-  utilitycommands.command.fly.speed:
-    default: op

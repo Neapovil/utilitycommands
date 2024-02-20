@@ -8,6 +8,7 @@ import com.github.neapovil.utilitycommands.command.FlyCommand;
 import com.github.neapovil.utilitycommands.command.HealCommand;
 import com.github.neapovil.utilitycommands.command.PlayerInventoryCommand;
 import com.github.neapovil.utilitycommands.command.RepairItemCommand;
+import com.github.neapovil.utilitycommands.command.ShowItem;
 
 public final class UtilityCommands extends JavaPlugin
 {
@@ -18,12 +19,13 @@ public final class UtilityCommands extends JavaPlugin
     {
         instance = this;
 
-        HealCommand.register();
-        FeedCommand.register();
-        RepairItemCommand.register();
-        EditItemCommand.register();
-        PlayerInventoryCommand.register();
-        FlyCommand.register();
+        new EditItemCommand().register();
+        new FeedCommand().register();
+        new FlyCommand().register();
+        new HealCommand().register();
+        new PlayerInventoryCommand().register();
+        new RepairItemCommand().register();
+        new ShowItem().register();
     }
 
     @Override
@@ -31,7 +33,7 @@ public final class UtilityCommands extends JavaPlugin
     {
     }
 
-    public static UtilityCommands getInstance()
+    public static UtilityCommands instance()
     {
         return instance;
     }

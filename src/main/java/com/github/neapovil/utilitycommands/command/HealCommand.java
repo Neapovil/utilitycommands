@@ -6,24 +6,23 @@ import org.bukkit.entity.Player;
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.arguments.PlayerArgument;
 
-public final class HealCommand
+public final class HealCommand implements ICommand
 {
-    public static final void register()
+    public void register()
     {
         new CommandAPICommand("heal")
-                .withPermission("utilitycommands.command.heal")
+                .withPermission("utilitycommands.command")
                 .executesPlayer((player, args) -> {
                     player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-
                     player.sendMessage("You have been healed");
                 })
                 .register();
 
         new CommandAPICommand("heal")
-                .withPermission("utilitycommands.command.heal")
-                .withArguments(new PlayerArgument("player").withPermission("utilitycommands.command.heal.other"))
+                .withPermission("utilitycommands.command")
+                .withArguments(new PlayerArgument("player"))
                 .executes((sender, args) -> {
-                    final Player player = (Player) args[0];
+                    final Player player = (Player) args.get("player");
 
                     player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
                     player.sendMessage("You have been healed");
