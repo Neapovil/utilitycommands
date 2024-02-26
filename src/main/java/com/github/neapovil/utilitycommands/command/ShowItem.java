@@ -14,21 +14,21 @@ public class ShowItem implements ICommand
     public void register()
     {
         new CommandAPICommand("showitem")
-            .withPermission("utilitycommands.command")
-            .executesPlayer((player, args) -> {
-                final ItemStack itemstack = player.getInventory().getItemInMainHand();
-    
-                if (itemstack.getType().equals(Material.AIR))
-                {
-                    throw CommandAPI.failWithString("You must have an item in your main hand");
-                }
-    
-                final Component component = player.displayName()
-                        .append(Component.text(" is showing an item in chat: "))
-                        .append(itemstack.displayName().hoverEvent(itemstack.asHoverEvent()));
-    
-                Bukkit.getServer().sendMessage(component);
-            })
-            .register();
+                .withPermission("utilitycommands.command")
+                .executesPlayer((player, args) -> {
+                    final ItemStack itemstack = player.getInventory().getItemInMainHand();
+
+                    if (itemstack.getType().equals(Material.AIR))
+                    {
+                        throw CommandAPI.failWithString("You must have an item in your main hand");
+                    }
+
+                    final Component component = player.displayName()
+                            .append(Component.text(" is showing an item in chat: "))
+                            .append(itemstack.displayName().hoverEvent(itemstack.asHoverEvent()));
+
+                    Bukkit.getServer().sendMessage(component);
+                })
+                .register();
     }
 }
