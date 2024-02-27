@@ -17,6 +17,7 @@ public class CritsCommand implements ICommand
     public void register()
     {
         new CommandAPICommand("crits")
+                .withPermission("utilitycommands.command")
                 .withArguments(new WorldArgument("world"))
                 .withArguments(new BooleanArgument("bool"))
                 .executes((sender, args) -> {
